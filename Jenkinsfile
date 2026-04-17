@@ -36,7 +36,6 @@ pipeline {
                         -Dsonar.sources=src \
                         -Dsonar.projectName=avg_consol \
                         -Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.login=${env.SONAR_TOKEN} \
                         -Dsonar.java.binaries=target/classes
                     """
                 }
