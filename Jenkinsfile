@@ -30,14 +30,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQubeServer') {
-                    sh """
-                        ${tool 'SonarScanner'}/bin/sonar-scanner \
-                        -Dsonar.projectKey=avg_consol \
-                        -Dsonar.sources=src \
-                        -Dsonar.projectName=avg_consol \
-                        -Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.java.binaries=target/classes
-                    """
+                    sh "${tool 'SonarScanner'}/bin/sonar-scanner"
                 }
             }
         }
