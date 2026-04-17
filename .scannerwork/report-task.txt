@@ -1,0 +1,6 @@
+projectKey=avg_consol
+serverUrl=http://localhost:9000
+serverVersion=25.3.0.104237
+dashboardUrl=http://localhost:9000/dashboard?id=avg_consol
+ceTaskId=2bff3b79-3834-40bd-a8df-ac9b9a3e7317
+ceTaskUrl=http://localhost:9000/api/ce/task?id=2bff3b79-3834-40bd-a8df-ac9b9a3e7317

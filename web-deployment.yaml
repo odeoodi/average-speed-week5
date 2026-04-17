@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: avg-speed-calculator
+  labels:
+    app: avg-speed-calculator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: avg-speed-calculator
+  template:
+    metadata:
+      labels:
+        app: avg-speed-calculator
+    spec:
+      containers:
+        - name: avg-speed-app
+          image: amirdirin/lectdemo5_2026:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              name: http
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: avg-speed-calculator-service
+spec:
+  selector:
+    app: avg-speed-calculator
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30080
+  type: NodePort
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: avg-speed-calculator
+  labels:
+    app: avg-speed-calculator
+spec:
+  containers:
+    - name: avg-speed-app
+      image: amirdirin/lectdemo5_2026:latest
+      ports:
+        - containerPort: 8080
