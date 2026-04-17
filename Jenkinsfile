@@ -23,14 +23,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn clean install'
+                sh 'mvn clean install'
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQubeServer') {
-                    bat """
+                    sh """
                                 ${tool 'SonarScanner'}\\bin\\sonar-scanner ^
                                 -Dsonar.projectKey=avg_consol ^
                                 -Dsonar.sources=src ^
